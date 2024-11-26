@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { DocumentController } from './apis/document/document.controller';
 import { DocumentService } from './apis/document/document.service';
@@ -8,6 +6,7 @@ import { DocumentModule } from './apis/document/document.module';
 import { AuthModule } from './apis/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import dataSource from './dataSource';
+import { IngestionModule } from './apis/ingestion/ingestion.module';
 
 @Module({
   imports: [
@@ -16,9 +15,10 @@ import dataSource from './dataSource';
       isGlobal: true,
     }),
     DocumentModule,
+    IngestionModule,
     TypeOrmModule.forRootAsync(dataSource),
   ],
-  controllers: [AppController, DocumentController],
-  providers: [AppService, DocumentService],
+  controllers: [ DocumentController],
+  providers: [ DocumentService],
 })
 export class AppModule {}
