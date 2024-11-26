@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { DocumentController } from './apis/document/document.controller';
-import { DocumentService } from './apis/document/document.service';
 import { DocumentModule } from './apis/document/document.module';
 import { AuthModule } from './apis/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -18,7 +16,7 @@ import { IngestionModule } from './apis/ingestion/ingestion.module';
     IngestionModule,
     TypeOrmModule.forRootAsync(dataSource),
   ],
-  controllers: [ DocumentController],
-  providers: [ DocumentService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
